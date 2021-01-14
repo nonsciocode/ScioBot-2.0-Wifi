@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>ScioBot Control Interface</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="data:,">
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+
+    <div class="mainControls">
+        <h2>ScioBot Control Interface</h2>
+        <div class="forwardButton" onclick="forward()"></div>
+        <div>
+            <div class="pivotLeftButton" onclick="pivotLeft()"></div>
+            <div class="stopButton" onclick="stop()"></div>
+            <div class="pivotRightButton" onclick="pivotRight()"></div>
+        </div>
+        <div class="backwardButton" onclick="backward()"></div>
+    </div>
+
+    <script type="text/javascript">
+        function forward() {
+            fetch('forward', {
+                method: 'post',
+            }).then(function(response) {
+                return response.json();
+            }).then(function(data) {
+                console.log(data);
+            });
+        }
+
+        function backward() {
+            fetch('backward', {
+                method: 'post',
+            }).then(function(response) {
+                return response.json();
+            }).then(function(data) {
+                console.log(data);
+            });
+        }
+
+        function pivotLeft() {
+            fetch('pivotLeft', {
+                method: 'post',
+            }).then(function(response) {
+                return response.json();
+            }).then(function(data) {
+                console.log(data);
+            });
+        }
+
+        function pivotRight() {
+            fetch('pivotRight', {
+                method: 'post',
+            }).then(function(response) {
+                return response.json();
+            }).then(function(data) {
+                console.log(data);
+            });
+        }
+
+        function stop() {
+            fetch('stop', {
+                method: 'post',
+            }).then(function(response) {
+                return response.json();
+            }).then(function(data) {
+                console.log(data);
+            });
+        }
+
+    </script>
+</body>
+
+</html>

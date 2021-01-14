@@ -1,0 +1,94 @@
+.mainControls {
+    text-align: center;
+}
+
+.forwardButton {
+    width: 0;
+    height: 0;
+    border-left: 60px solid transparent;
+    border-right: 60px solid transparent;
+    border-bottom: 80px solid #0077ff;
+    margin: 5px;
+    display: inline-block;
+}
+
+.forwardButton:hover {
+    border-bottom: 80px solid #0044ff;
+}
+
+.forwardButton:active {
+    border-bottom: 80px solid #0077ff;
+}
+
+.backwardButton {
+    width: 0;
+    height: 0;
+    border-left: 60px solid transparent;
+    border-right: 60px solid transparent;
+    border-top: 80px solid #0077ff;
+    margin: 5px;
+        display: inline-block;
+}
+
+.backwardButton:hover {
+    border-top: 80px solid #0044ff;
+}
+
+.backwardButton:active {
+    border-top: 80px solid #0077ff;
+}
+
+.stopButton {
+    width: 100;
+    height: 100;
+    background: #ea330f;
+    margin: 15px;
+    margin-left: 10px;
+    margin-right: 10px;
+    display: inline-block;
+    
+}
+
+.stopButton:hover {
+    background: #ff330f;
+}
+
+.stopButton:active {
+    background: #ea330f;
+}
+
+.pivotLeftButton {
+    width: 0;
+    height: 0;
+    border-top: 60px solid transparent;
+    border-bottom: 60px solid transparent;
+    border-right: 80px solid #0077ff;
+    margin: 5px;
+    display: inline-block;
+}
+
+.pivotLeftButton:hover {
+    border-right: 80px solid #0044ff;
+}
+
+.pivotLeftButton:active {
+    border-right: 80px solid #0077ff;
+}
+
+.pivotRightButton {
+    width: 0;
+    height: 0;
+    border-top: 60px solid transparent;
+    border-bottom: 60px solid transparent;
+    border-left: 80px solid #0077ff;
+    margin: 5px;
+    display: inline-block;
+}
+
+.pivotRightButton:hover {
+    border-left: 80px solid #0044ff;
+}
+
+.pivotRightButton:active {
+    border-left: 80px solid #0077ff;
+}
