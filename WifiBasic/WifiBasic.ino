@@ -1,3 +1,17 @@
+/** Copyright (C) 2021  Nonscio, LLC
+ *  This program is free software: you can redistribute it and/or modify
+ *   it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
 
 #include <ESP8266WiFi.h>
 #include <ESPAsyncTCP.h>
@@ -5,9 +19,12 @@
 #include <FS.h>
 #include <Wire.h>
 
-// Replace with your network credentials
-const char* ssid = "BellaFonte";
-const char* password = "farmazabu!";
+//================================================================================
+//CONSTANTS
+//================================================================================
+
+const char* ssid = "yourssid";
+const char* password = "yournetworkpassword";
 
 const int STOP = 0;
 const int FORWARD = 1;
@@ -15,15 +32,26 @@ const int BACKWARD = 2;
 const int PIVOT_LEFT = 3;
 const int PIVOT_RIGHT = 4;
 
+//================================================================================
+//VARIABLES
+//================================================================================
+
 int state = 0;
 bool didStateChange = false;
 
 // Create AsyncWebServer object on port 80
 AsyncWebServer server(80);
 
+//================================================================================
+//FUNCTIONS
+//================================================================================
 
+/**
+ * Function: setNewState()
+ * Description: The setNewState() function 
+ */
 void setNewState(int newState) {
-
+  
   Serial.print("State changed from: ");
   Serial.print(state);
   Serial.print(" to: ");
@@ -31,14 +59,20 @@ void setNewState(int newState) {
 
   state = newState;
   didStateChange = true;
-
-
   
 }
+
+/**
+ * Function: setup()
+ * Description: The setup() function runs once after the microcontroller is 
+ * booted or reset. Sets the pin modes of the defined motor logic pin to OUTPUT
+ * mode.
+ */
  
-void setup(){
-  // Serial port for debugging purposes
+void setup() {
+  
   Serial.begin(115200);
+  
   pinMode(2, OUTPUT);
   pinMode(4, OUTPUT);
   pinMode(5, OUTPUT);
@@ -82,17 +116,17 @@ void setup(){
     setNewState(BACKWARD);
   });
   
-    // Route to set GPIO to LOW
+  // Route to set GPIO to LOW
   server.on("/pivotLeft", HTTP_POST, [](AsyncWebServerRequest *request){
     setNewState(PIVOT_LEFT);
   });
 
-    // Route to set GPIO to LOW
+  // Route to set GPIO to LOW
   server.on("/pivotRight", HTTP_POST, [](AsyncWebServerRequest *request){
     setNewState(PIVOT_RIGHT);
   });
 
-    // Route to set GPIO to LOW
+  // Route to set GPIO to LOW
   server.on("/stop", HTTP_POST, [](AsyncWebServerRequest *request){
     setNewState(STOP);
   });
@@ -100,7 +134,12 @@ void setup(){
   // Start server
   server.begin();
 }
- 
+
+/**
+ * Function: loop()
+ * Description: The loop() function runs repeatedly in a loop after the setup()
+ * function has completed.
+ */
 void loop(){
 
   if(didStateChange) {    
